@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public GameObject[] StraightProjectiles;
 	public float FireInterval = 0.2f;
 	private float nextFireTime;
+	private int fireIndex = 0;
 	// Use this for initialization
 	void Start () {
 		nextFireTime = Time.fixedTime;
@@ -39,10 +40,11 @@ public class Player : MonoBehaviour {
 		transform.position += (Vector3)moveVector;
 		if (Input.GetButton("Fire1") & Time.fixedTime > nextFireTime)
 		{
-			int projectileIndex = Random.Range(0, StraightProjectiles.Length);
-			GameObject.Instantiate(StraightProjectiles[projectileIndex],
+			GameObject.Instantiate(StraightProjectiles[fireIndex],
 								   FirePoint.position, Quaternion.identity);
 			nextFireTime = Time.fixedTime + FireInterval;
+			fireIndex++;
+			fireIndex = fireIndex % StraightProjectiles.Length;
 		}
 	}
 }
