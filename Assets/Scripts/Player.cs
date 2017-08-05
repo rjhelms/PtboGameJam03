@@ -8,11 +8,11 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector2 moveVector = new Vector2();
 		if (Input.GetAxis("Horizontal") > 0)
 		{
