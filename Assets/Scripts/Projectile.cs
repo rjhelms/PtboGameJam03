@@ -24,14 +24,22 @@ public class Projectile : MonoBehaviour {
 	void FixedUpdate()
 	{
 		transform.position += MoveVector;
-		if (Time.fixedTime > dieTime)
-		{
-			Destroy(gameObject);
-		}
+		// if (Time.fixedTime > dieTime)
+		// {
+		// 	Destroy(gameObject);
+		// }
 		if (hasGravity & Time.fixedTime > gravTime)
 		{
 			MoveVector += Vector3.down;
 			gravTime += gravRate;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.tag == "MainCamera")
+		{
+			Destroy(gameObject);
 		}
 	}
 }
