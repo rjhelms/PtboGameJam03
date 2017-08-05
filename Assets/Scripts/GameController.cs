@@ -15,11 +15,28 @@ public class GameController : MonoBehaviour {
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
+	public GameObject[] Enemies;
+	public GameObject BaseTerrain;
 
 	[Header("Containters")]
 	public Transform HippieContainer;
+	public Transform EnemyContainer;
+	public Transform TerrainContainer;
+
+	[Header("World Gen Properties")]
+	public int GridSizeX = 16;
+	public int GridSizeY = 16;
+	public int GenXOffset = 96;
+	public int GenYOffset = -100;
+	public float TerrainHeightChangeChance = 0.25f;
+	public float enemyDensity = 0.05f;
+	public int TerrainHeightMin = 1;
+	public int TerrainHeightMax = 6;
+
 	private float pixelRatioAdjustment;
 	private int scrollFrame = 0;
+	private int nextGenXPosition = 16;
+	private int terrainHeight = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +62,11 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (WorldCamera.transform.position.x >= nextGenXPosition)
+		{
+			GenerateTile();
+			nextGenXPosition += GridSizeX;
+		}
 	}
 
 	void FixedUpdate()
@@ -72,5 +93,46 @@ public class GameController : MonoBehaviour {
 			newHippie.transform.position += new Vector3(16, 0, 0);
 		}
 		Destroy(enemy);
+	}
+
+	void GenerateTile()
+	{
+		Debug.Log("Generating terrain");
+		// check for height change
+		float changeHeight = Random.value;
+		if (changeHeight < TerrainHeightChangeChance)
+		{
+			float increase = Random.value;
+			if (terrainHeight == TerrainHeightMax | 
+				(increase < 0.5f & terrainHeight > TerrainHeightMin))
+			{
+				Debug.Log("Height down");
+				terrainHeight--;
+				if (terrainHeight < TerrainHeightMin)
+				{
+					terrainHeight++;
+				}
+			} else {
+				Debug.Log("Height up");
+				terrainHeight++;
+				if (terrainHeight > TerrainHeightMax)
+				{
+					terrainHeight--;
+				}
+			}
+			Debug.Log("New height: " + terrainHeight);
+		}
+		// generate terrain
+		float XPos = nextGenXPosition + GenXOffset;
+		float YPos = GenYOffset;
+		for (int i = 0; i < terrainHeight; i++)
+		{
+			Instantiate(BaseTerrain, new Vector3(XPos, YPos, 0), 
+						Quaternion.identity, TerrainContainer);
+			YPos += GridSizeY;
+		}
+		// test for enemy generation
+		// if yes, determine enemy
+		// spawn enemy
 	}
 }
