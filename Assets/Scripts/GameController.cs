@@ -8,9 +8,16 @@ public class GameController : MonoBehaviour {
 	public Material WorldCameraTexture;
 	public int TargetX;
 	public int TargetY;
+
 	[Header("Game Balance")]
 	public int ScrollRate;
 	public int ScrollFrames;
+
+	[Header("Global Prefabs")]
+	public GameObject[] Hippies;
+
+	[Header("Containters")]
+	public Transform HippieContainer;
 	private float pixelRatioAdjustment;
 	private int scrollFrame = 0;
 
@@ -50,5 +57,20 @@ public class GameController : MonoBehaviour {
 			Vector3 scrollVector = Vector2.right * ScrollRate;
 			WorldCamera.transform.position += scrollVector;
 		}
+	}
+
+	public void SpawnHippie(GameObject enemy)
+	{
+		int hippieIndex = Random.Range(0, Hippies.Length);
+		GameObject newHippie = Instantiate(Hippies[hippieIndex],
+										   enemy.transform.position,
+										   Quaternion.identity,
+										   HippieContainer);
+		if (Random.value < 0.5f) // 50% chance will spawn flipped L/R
+		{
+			newHippie.transform.localScale = new Vector3(-1, 1, 1);
+			newHippie.transform.position += new Vector3(16, 0, 0);
+		}
+		Destroy(enemy);
 	}
 }

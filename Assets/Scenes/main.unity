@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 1312917556}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -588,6 +588,10 @@ MonoBehaviour:
   TargetY: 200
   ScrollRate: 1
   ScrollFrames: 2
+  Hippies:
+  - {fileID: 1007774111392734, guid: 0698ef5de1eec9c4e89f4c0461b79902, type: 2}
+  - {fileID: 1456056429671190, guid: 7fb3bb6437bccac4687259659c6744ab, type: 2}
+  HippieContainer: {fileID: 1917129457}
 --- !u!4 &1312917557
 Transform:
   m_ObjectHideFlags: 0
@@ -742,4 +746,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 230955898}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1917129456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1917129457}
+  m_Layer: 0
+  m_Name: HippieContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917129457
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917129456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
