@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public int moveSpeedX = 1;
 	public int moveSpeedY = 2;
 	public Transform FirePoint;
+	public Transform ProjectileParent;
 	public GameObject[] StraightProjectiles;
 	public GameObject[] GravProjectiles;
 	public float FireInterval = 0.2f;
@@ -22,11 +23,11 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
 		Vector2 moveVector = new Vector2();
 		if (Input.GetAxis("Horizontal") > 0
-			& transform.position.x < 36)
+			& transform.localPosition.x < 36)
 		{
 			moveVector += Vector2.right * moveSpeedX;
 		} else if (Input.GetAxis("Horizontal") < 0
-				   & transform.position.x > -80)
+				   & transform.localPosition.x > -80)
 		{
 			moveVector += Vector2.left * moveSpeedX;
 		}
@@ -39,11 +40,12 @@ public class Player : MonoBehaviour {
 		{
 			moveVector += Vector2.down * moveSpeedY;
 		}
-		transform.position += (Vector3)moveVector;
+		transform.localPosition += (Vector3)moveVector;
 		if (Input.GetButton("Fire1") & Time.fixedTime > nextFireTime[0])
 		{
 			GameObject.Instantiate(StraightProjectiles[fireIndex],
-								   FirePoint.position, Quaternion.identity);
+								   FirePoint.position, Quaternion.identity,
+								   ProjectileParent);
 			nextFireTime[0] = Time.fixedTime + FireInterval;
 			fireIndex++;
 			fireIndex = fireIndex % StraightProjectiles.Length;
@@ -51,7 +53,8 @@ public class Player : MonoBehaviour {
 		if (Input.GetButton("Fire2") & Time.fixedTime > nextFireTime[1])
 		{
 			GameObject.Instantiate(GravProjectiles[fireIndex],
-								   FirePoint.position, Quaternion.identity);
+								   FirePoint.position, Quaternion.identity,
+								   ProjectileParent);
 			nextFireTime[1] = Time.fixedTime + FireInterval;
 			fireIndex++;
 			fireIndex = fireIndex % StraightProjectiles.Length;

@@ -8,7 +8,11 @@ public class GameController : MonoBehaviour {
 	public Material WorldCameraTexture;
 	public int TargetX;
 	public int TargetY;
+	[Header("Game Balance")]
+	public int ScrollRate;
+	public int ScrollFrames;
 	private float pixelRatioAdjustment;
+	private int scrollFrame = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -35,5 +39,16 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void FixedUpdate()
+	{
+		scrollFrame++;
+		scrollFrame = scrollFrame % ScrollFrames;
+		if (scrollFrame == 0)
+		{
+			Vector3 scrollVector = Vector2.right * ScrollRate;
+			WorldCamera.transform.position += scrollVector;
+		}
 	}
 }

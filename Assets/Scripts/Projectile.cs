@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		transform.position += MoveVector;
+		transform.localPosition += MoveVector;
 		// if (Time.fixedTime > dieTime)
 		// {
 		// 	Destroy(gameObject);
