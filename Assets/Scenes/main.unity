@@ -558,13 +558,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7a3848407635541ac01415e2405a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeedX: 1
+  moveSpeedY: 2
   FirePoint: {fileID: 759793008}
   StraightProjectiles:
   - {fileID: 1274813335923786, guid: be41dbbcd0bd770428d591f13f3954f8, type: 2}
   - {fileID: 1673891598564922, guid: c69cdd7173b87de4891252bd22651785, type: 2}
   - {fileID: 1656209297575866, guid: 6942ca626525dde408b08dacdcc0668c, type: 2}
   - {fileID: 1081969489939242, guid: a0648aafe06debb479ccf6274ca080c7, type: 2}
+  GravProjectiles:
+  - {fileID: 1477510627737942, guid: d6ec5a9ffa950de43a63007dc8a2acd0, type: 2}
+  - {fileID: 1136108016594250, guid: 4982431a7fffab1439e74246de29f8a3, type: 2}
+  - {fileID: 1047484755510976, guid: d60d0510601ee784e97b1048edc5d549, type: 2}
+  - {fileID: 1109735490701458, guid: 4b18ff274b5ee8b4aa3b26d61092f36c, type: 2}
+  FireInterval: 0.2
 --- !u!212 &1515648435
 SpriteRenderer:
   m_ObjectHideFlags: 0
