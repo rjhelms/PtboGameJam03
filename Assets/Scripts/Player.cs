@@ -8,10 +8,11 @@ public class Player : MonoBehaviour {
 	public int moveSpeedY = 2;
 	public Transform FirePoint;
 	public GameObject[] StraightProjectiles;
-
+	public float FireInterval = 0.2f;
+	private float nextFireTime;
 	// Use this for initialization
 	void Start () {
-
+		nextFireTime = Time.fixedTime;
 	}
 	
 	// Update is called once per frame
@@ -36,11 +37,12 @@ public class Player : MonoBehaviour {
 			moveVector += Vector2.down * moveSpeedY;
 		}
 		transform.position += (Vector3)moveVector;
-		if (Input.GetButton("Fire1"))
+		if (Input.GetButton("Fire1") & Time.fixedTime > nextFireTime)
 		{
 			int projectileIndex = Random.Range(0, StraightProjectiles.Length);
 			GameObject.Instantiate(StraightProjectiles[projectileIndex],
 								   FirePoint.position, Quaternion.identity);
+			nextFireTime = Time.fixedTime + FireInterval;
 		}
 	}
 }
