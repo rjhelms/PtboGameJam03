@@ -40,6 +40,11 @@ public class Projectile : MonoBehaviour {
 		if (other.tag == "MainCamera")
 		{
 			Destroy(gameObject);
+		} else if (other.tag == "Enemy")
+		{
+			Debug.Log("Hit enemy " + other);
+			Destroy(gameObject);
+			other.GetComponent<Enemy>().Hit();
 		}
 	}
 }
