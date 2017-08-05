@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
 		{
 			moveVector += Vector2.down;
 		}
-		Debug.Log(moveVector);
+		moveVector *= moveSpeed;
+		transform.position += (Vector3)moveVector;
 	}
 }
