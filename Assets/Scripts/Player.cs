@@ -14,17 +14,17 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector2 moveVector = new Vector2();
-		if (Input.GetAxis("Horizontal") > 0)
+		if (Input.GetAxis("Horizontal") > 0 & transform.position.x < 36)
 		{
 			moveVector += Vector2.right;
-		} else if (Input.GetAxis("Horizontal") < 0)
+		} else if (Input.GetAxis("Horizontal") < 0 & transform.position.x > -80)
 		{
 			moveVector += Vector2.left;
 		}
-		if (Input.GetAxis("Vertical") > 0)
+		if (Input.GetAxis("Vertical") > 0 & transform.localPosition.y < 68)
 		{
 			moveVector += Vector2.up;
-		} else if (Input.GetAxis("Vertical") < 0)
+		} else if (Input.GetAxis("Vertical") < 0 & transform.localPosition.y > -100)
 		{
 			moveVector += Vector2.down;
 		}
