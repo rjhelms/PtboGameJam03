@@ -30,5 +30,11 @@ public class Player : MonoBehaviour {
 		}
 		moveVector *= moveSpeed;
 		transform.position += (Vector3)moveVector;
+		if (Input.GetButton("Fire1"))
+		{
+			int projectileIndex = Random.Range(0, StraightProjectiles.Length);
+			GameObject.Instantiate(StraightProjectiles[projectileIndex],
+								   FirePoint.position, Quaternion.identity);
+		}
 	}
 }

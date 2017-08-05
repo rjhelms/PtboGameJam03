@@ -284,6 +284,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759793007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 759793008}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &759793008
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 759793007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1515648436}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901803131
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +559,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  FirePoint: {fileID: 759793008}
+  StraightProjectiles:
+  - {fileID: 1274813335923786, guid: be41dbbcd0bd770428d591f13f3954f8, type: 2}
+  - {fileID: 1673891598564922, guid: c69cdd7173b87de4891252bd22651785, type: 2}
+  - {fileID: 1656209297575866, guid: 6942ca626525dde408b08dacdcc0668c, type: 2}
+  - {fileID: 1081969489939242, guid: a0648aafe06debb479ccf6274ca080c7, type: 2}
 --- !u!212 &1515648435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -581,7 +615,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -72, y: 32, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 759793008}
   m_Father: {fileID: 230955898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
