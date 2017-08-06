@@ -906,7 +906,7 @@ MonoBehaviour:
   TargetX: 160
   TargetY: 200
   ScrollRate: 1
-  ScrollFrames: 2
+  ScrollFrames: 1
   Hippies:
   - {fileID: 1007774111392734, guid: 0698ef5de1eec9c4e89f4c0461b79902, type: 2}
   - {fileID: 1456056429671190, guid: 7fb3bb6437bccac4687259659c6744ab, type: 2}
@@ -924,7 +924,7 @@ MonoBehaviour:
   GenXOffset: 96
   GenYOffset: -100
   TerrainHeightChangeChance: 0.25
-  EnemyDensity: 0.1
+  EnemyDensity: 0.15
   TerrainHeightMin: 1
   TerrainHeightMax: 7
 --- !u!4 &1312917557
