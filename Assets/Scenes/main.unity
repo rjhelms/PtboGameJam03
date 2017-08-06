@@ -1087,6 +1087,9 @@ MonoBehaviour:
   ScrollScorePoints: 10
   PointsSpeed: 5000
   PointsSpeedScale: 1.1
+  PointsDensity: 2500
+  PointsDensityScale: 1.05
+  PointsDensityFactor: 1.2
   Hippies:
   - {fileID: 1007774111392734, guid: 0698ef5de1eec9c4e89f4c0461b79902, type: 2}
   - {fileID: 1456056429671190, guid: 7fb3bb6437bccac4687259659c6744ab, type: 2}

@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour {
 	public int ScrollScorePoints = 10;
 	public int PointsSpeed = 5000;
 	public float PointsSpeedScale = 1.5f;
+	public float PointsDensity = 2500;
+	public float PointsDensityScale = 1.05f;
+	public float PointsDensityFactor = 1.01f;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -102,6 +105,10 @@ public class GameController : MonoBehaviour {
 		if (ScoreManager.Instance.Score >= PointsSpeed)
 		{
 			IncreaseSpeed();
+		}
+		if (ScoreManager.Instance.Score >= PointsDensity)
+		{
+			IncreaseDensity();
 		}
 	}
 
@@ -192,5 +199,15 @@ public class GameController : MonoBehaviour {
 		PointsSpeed = Mathf.RoundToInt(Mathf.Pow(PointsSpeed,
 												 PointsSpeedScale));
 		Debug.Log("Next speed increase: " + PointsSpeed);
+	}
+
+	void IncreaseDensity()
+	{
+		float lnDensity = Mathf.Log(EnemyDensity);
+		lnDensity /= PointsDensityFactor;
+		EnemyDensity = Mathf.Exp(lnDensity);
+		PointsDensity = Mathf.RoundToInt(Mathf.Pow(PointsDensity,
+												   PointsDensityScale));
+		Debug.Log("Next density increase: " + PointsDensity);
 	}
 }
