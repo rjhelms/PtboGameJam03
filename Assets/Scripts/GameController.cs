@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour {
 	[Header("Game Balance")]
 	public int ScrollRate;
 	public int ScrollFrames;
-	public int ScrollScore = 10;
+	public int ScrollScoreDistance = 50;
+	public int ScrollScorePoints = 10;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -43,6 +44,7 @@ public class GameController : MonoBehaviour {
 	private int scrollFrame = 0;
 	private int nextGenXPosition = 16;
 	private int terrainHeight = 1;
+	private int scrollSinceLastScore;
 
 	// Use this for initialization
 	void Start () {
@@ -88,7 +90,12 @@ public class GameController : MonoBehaviour {
 		{
 			Vector3 scrollVector = Vector2.right * ScrollRate;
 			WorldCamera.transform.position += scrollVector;
-			ScoreManager.Instance.Score += ScrollRate * ScrollScore;
+			scrollSinceLastScore += ScrollRate;
+			if (scrollSinceLastScore >= ScrollScoreDistance)
+			{
+				ScoreManager.Instance.Score += ScrollScorePoints;
+				scrollSinceLastScore = 0;
+			}
 		}
 	}
 
