@@ -124,7 +124,7 @@ MonoBehaviour:
   Projectile: {fileID: 1707956683156476, guid: 9aaf198a805abaf419e23658ddbf24ef, type: 2}
   FirePoint: {fileID: 4676689833644766}
   StartRestTime: 0.2
-  RestTime: 0.3
+  RestTime: 0.5
   FireInterval: 0.1
   FireBurst: 3
 --- !u!212 &212169978985988098
