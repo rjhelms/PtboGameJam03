@@ -1429,6 +1429,8 @@ MonoBehaviour:
   FXHPUp: {fileID: 8300000, guid: e9ed35e00a6710f46ad29cb8f647e186, type: 3}
   FXGameOver: {fileID: 8300000, guid: b9e2b789edca40d4fb8dce5f15874f47, type: 3}
   FXBlip: {fileID: 8300000, guid: bf0f20f4bb4629e4cb437cdf4a822411, type: 3}
+  MusicPlayer: {fileID: 1839790962510118, guid: 7661761502f90ec4d838e1b867080bf5,
+    type: 2}
 --- !u!4 &1312917557
 Transform:
   m_ObjectHideFlags: 0

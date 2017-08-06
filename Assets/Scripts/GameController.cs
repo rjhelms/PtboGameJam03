@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour {
 	public AudioClip FXHPUp;
 	public AudioClip FXGameOver;
 	public AudioClip FXBlip;
+	public GameObject MusicPlayer;
 
 	private float pixelRatioAdjustment;
 	private int scrollFrame = 0;
@@ -86,6 +87,12 @@ public class GameController : MonoBehaviour {
 				new Vector2(0, (1 - pixelRatioAdjustment) / 2);
             WorldCamera.orthographicSize = TargetX / 2;
         }
+		if (GameObject.FindWithTag("MusicPlayer") == null)
+		{
+			GameObject musicPlayer = Instantiate(MusicPlayer, Vector3.zero,
+											Quaternion.identity);
+			Object.DontDestroyOnLoad(musicPlayer);
+		}
 	}
 	
 	// Update is called once per frame
