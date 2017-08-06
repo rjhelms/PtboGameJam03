@@ -161,7 +161,6 @@ public class GameController : MonoBehaviour {
 			int enemyIndex = Mathf.FloorToInt(Mathf.Log(enemyRand));
 			enemyIndex = Enemies.Length - enemyIndex;
 			enemyIndex--;
-			Debug.Log(enemyIndex);
 
 			// spawn enemy
 			YPos = GenYOffset + terrainHeight * GridSizeY;
