@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 	public Image HealthImage;
 	public int HealthImageUnitX = 12;
 	public int HealthImageUnitY = 16;
+	public GameObject TitlePanel;
 
 	[Header("Game Balance")]
 	public int ScrollRate;
@@ -27,6 +28,8 @@ public class GameController : MonoBehaviour {
 	public int PointsHitPoints = 5000;
 	public float PointsHitPointsScale = 1.1f;
 	public bool IsRunning;
+	public bool IsStarted = false;
+	public float StartDelay = 0.1f;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -66,6 +69,7 @@ public class GameController : MonoBehaviour {
 	private int nextGenXPosition = 16;
 	private int terrainHeight = 1;
 	private int scrollSinceLastScore;
+	private float startTime;
 
 	// Use this for initialization
 	void Start () {
@@ -97,7 +101,21 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (IsRunning)
+		if (!IsStarted)
+		{
+			if (Input.GetButtonDown("Fire1"))
+			{
+				IsStarted = true;
+				TitlePanel.SetActive(false);
+				startTime = Time.time + StartDelay;
+			}
+		} else if (IsStarted && !IsRunning)
+		{
+			if (Time.time > startTime)
+			{
+				IsRunning = true;
+			}
+		} else if (IsRunning)
 		{
 			if (WorldCamera.transform.position.x >= nextGenXPosition)
 			{
