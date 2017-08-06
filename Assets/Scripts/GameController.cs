@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour {
 				}
 			} else if (!IsStarting && IsRunning)
 			{
-				if (WorldCamera.transform.position.x >= nextGenXPosition)
+				while (WorldCamera.transform.position.x >= nextGenXPosition)
 				{
 					GenerateTile();
 					nextGenXPosition += GridSizeX;
