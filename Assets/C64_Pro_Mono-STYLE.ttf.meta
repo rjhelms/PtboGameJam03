@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2e4120c2e64d73a45ba92b6d55755f3d
+timeCreated: 1501998833
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 256
+  forceTextureCase: 0
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: C64 Pro Mono
+  fontNames:
+  - C64 Pro Mono
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

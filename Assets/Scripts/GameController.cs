@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 	[Header("Camera Properties")]
@@ -8,10 +9,12 @@ public class GameController : MonoBehaviour {
 	public Material WorldCameraTexture;
 	public int TargetX;
 	public int TargetY;
+	public Text ScoreText;
 
 	[Header("Game Balance")]
 	public int ScrollRate;
 	public int ScrollFrames;
+	public int ScrollScore = 10;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -67,6 +70,8 @@ public class GameController : MonoBehaviour {
 			GenerateTile();
 			nextGenXPosition += GridSizeX;
 		}
+		ScoreText.text = string.Format("SCORE\n{0}",
+									   ScoreManager.Instance.Score);
 	}
 
 	void FixedUpdate()
@@ -77,10 +82,11 @@ public class GameController : MonoBehaviour {
 		{
 			Vector3 scrollVector = Vector2.right * ScrollRate;
 			WorldCamera.transform.position += scrollVector;
+			ScoreManager.Instance.Score += ScrollRate * ScrollScore;
 		}
 	}
 
-	public void SpawnHippie(GameObject enemy)
+	public void SpawnHippie(GameObject enemy, int points)
 	{
 		int hippieIndex = Random.Range(0, Hippies.Length);
 		GameObject newHippie = Instantiate(Hippies[hippieIndex],
@@ -92,6 +98,7 @@ public class GameController : MonoBehaviour {
 			newHippie.transform.localScale = new Vector3(-1, 1, 1);
 			newHippie.transform.position += new Vector3(16, 0, 0);
 		}
+		ScoreManager.Instance.Score += points;
 		Destroy(enemy);
 	}
 

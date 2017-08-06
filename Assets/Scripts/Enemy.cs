@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+	public int PointValue;
+
 	private GameController controller;
 
 	// Use this for initialization
@@ -14,6 +16,6 @@ public class Enemy : MonoBehaviour {
 
 	public void Hit()
 	{
-		controller.SpawnHippie(gameObject);
+		controller.SpawnHippie(gameObject, PointValue);
 	}
 }
