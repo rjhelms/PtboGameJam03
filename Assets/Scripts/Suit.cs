@@ -42,6 +42,8 @@ public class Suit : Enemy
                                     Quaternion.identity);
                         controller.FXPlayer.PlayOneShot(controller.FXSuitFire);
                         isFiring = true;
+                    } else {
+                        nextStateChange += RestTime;
                     }
                 } else {
                     spriteRenderer.sprite = BaseSprite;
