@@ -1305,8 +1305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7a3848407635541ac01415e2405a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedX: 1
-  moveSpeedY: 2
+  moveSpeedX: 2
+  moveSpeedY: 3
   FirePoint: {fileID: 759793008}
   ProjectileParent: {fileID: 1541931398}
   StraightProjectiles:
