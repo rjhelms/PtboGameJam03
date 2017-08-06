@@ -34,10 +34,11 @@ public class Projectile : MonoBehaviour {
 			Debug.Log("Hit enemy " + other);
 			Destroy(gameObject);
 			other.GetComponent<Enemy>().Hit();
-		} else if (!isFriendly & other.tag == "Player")
+		} else if (!isFriendly && other.tag == "Player" 
+				   && !other.GetComponent<Player>().IsHitTimeout)
 		{
-			Debug.Log("Yoo loooooz");
-			Debug.Break();
+			other.GetComponent<Player>().Hit();
+			Destroy(gameObject);
 		}
 	}
 }

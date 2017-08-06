@@ -11,13 +11,40 @@ public class Player : MonoBehaviour {
 	public GameObject[] StraightProjectiles;
 	public GameObject[] GravProjectiles;
 	public float FireInterval = 0.2f;
+	public bool IsHitTimeout = false;
+	public float HitTimeoutTime = 0.5f;
+	public float HitTimeoutFlash = 0.1f;
 	private float[] nextFireTime = new float[2];
 	private int fireIndex = 0;
+	private float endHitTimeout;
+	private float flashHitTimeout;
+	private GameController controller;
+	private SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
 	void Start () {
 		nextFireTime[0] = Time.fixedTime;
 		nextFireTime[1] = Time.fixedTime;
+		controller = GameObject.FindWithTag("GameController")
+					 .GetComponent<GameController>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	void Update()
+	{
+		if (IsHitTimeout)
+		{
+			if (Time.fixedTime > flashHitTimeout)
+			{
+				spriteRenderer.enabled = !spriteRenderer.enabled;
+				flashHitTimeout += HitTimeoutFlash;
+			}
+			if (Time.fixedTime > endHitTimeout)
+			{
+				spriteRenderer.enabled = true;
+				IsHitTimeout = false;
+			}
+		}
 	}
 
 	void FixedUpdate () {
@@ -59,5 +86,14 @@ public class Player : MonoBehaviour {
 			fireIndex++;
 			fireIndex = fireIndex % StraightProjectiles.Length;
 		}
+	}
+
+	public void Hit()
+	{
+		IsHitTimeout = true;
+		controller.TakeDamage();
+		spriteRenderer.enabled = !spriteRenderer.enabled;
+		endHitTimeout = Time.fixedTime + HitTimeoutTime;
+		flashHitTimeout = Time.fixedTime + HitTimeoutFlash;
 	}
 }

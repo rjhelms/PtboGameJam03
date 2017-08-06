@@ -108,6 +108,11 @@ public class GameController : MonoBehaviour {
 		Destroy(enemy);
 	}
 
+	public void TakeDamage()
+	{
+		ScoreManager.Instance.HitPoints--;
+	}
+
 	void GenerateTile()
 	{
 		// check for height change
