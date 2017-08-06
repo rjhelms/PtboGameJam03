@@ -117,7 +117,13 @@ public class GameController : MonoBehaviour {
 
 	public void TakeDamage()
 	{
-		ScoreManager.Instance.HitPoints--;
+		if (ScoreManager.Instance.HitPoints > 0)
+		{
+			ScoreManager.Instance.HitPoints--;
+		} else {
+			Debug.Log("Game over!");
+			Debug.Break();
+		}
 	}
 
 	void GenerateTile()
