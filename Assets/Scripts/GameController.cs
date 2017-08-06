@@ -10,6 +10,9 @@ public class GameController : MonoBehaviour {
 	public int TargetX;
 	public int TargetY;
 	public Text ScoreText;
+	public Image HealthImage;
+	public int HealthImageUnitX = 12;
+	public int HealthImageUnitY = 16;
 
 	[Header("Game Balance")]
 	public int ScrollRate;
@@ -72,6 +75,9 @@ public class GameController : MonoBehaviour {
 		}
 		ScoreText.text = string.Format("SCORE\n{0}",
 									   ScoreManager.Instance.Score);
+		HealthImage.rectTransform.sizeDelta = 
+			new Vector2(ScoreManager.Instance.HitPoints * HealthImageUnitX,
+						HealthImageUnitY);
 	}
 
 	void FixedUpdate()
