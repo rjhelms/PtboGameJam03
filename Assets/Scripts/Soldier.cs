@@ -43,6 +43,8 @@ public class Soldier : Enemy
                     // if firing, pop off a shot
                     Instantiate(Projectile, FirePoint.position,
                                 Quaternion.identity);
+
+                    controller.FXPlayer.PlayOneShot(controller.FXSoldierFire);
                     // increment burst count
                     burstCount++;
                     // if at limit, reset count and set next to rest interval

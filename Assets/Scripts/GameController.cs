@@ -47,6 +47,18 @@ public class GameController : MonoBehaviour {
 	public float EnemyDensity = 0.05f;
 	public int TerrainHeightMin = 1;
 	public int TerrainHeightMax = 6;
+	
+	[Header("Audio")]
+	public AudioSource FXPlayer;
+	public AudioClip FXPlayerFire;
+	public AudioClip FXSoldierFire;
+	public AudioClip FXSuitFire;
+	public AudioClip FXPlayerHit;
+	public AudioClip FXEnemyHit;
+	public AudioClip FXSpeedUp;
+	public AudioClip FXHPUp;
+	public AudioClip FXGameOver;
+	public AudioClip FXBlip;
 
 	private float pixelRatioAdjustment;
 	private int scrollFrame = 0;
@@ -138,6 +150,7 @@ public class GameController : MonoBehaviour {
 			newHippie.transform.position += new Vector3(16, 0, 0);
 		}
 		ScoreManager.Instance.Score += points;
+		FXPlayer.PlayOneShot(FXEnemyHit);
 		Destroy(enemy);
 	}
 
@@ -146,7 +159,9 @@ public class GameController : MonoBehaviour {
 		if (ScoreManager.Instance.HitPoints > 0)
 		{
 			ScoreManager.Instance.HitPoints--;
+			FXPlayer.PlayOneShot(FXPlayerHit);
 		} else {
+			FXPlayer.PlayOneShot(FXGameOver);
 			Debug.Log("Game over!");
 			Lose();
 		}
@@ -212,6 +227,7 @@ public class GameController : MonoBehaviour {
 		PointsSpeed = Mathf.RoundToInt(Mathf.Pow(PointsSpeed,
 												 PointsSpeedScale));
 		Debug.Log("Next speed increase: " + PointsSpeed);
+		FXPlayer.PlayOneShot(FXSpeedUp);
 	}
 
 	void IncreaseDensity()
@@ -233,6 +249,7 @@ public class GameController : MonoBehaviour {
 		PointsHitPoints = Mathf.RoundToInt(Mathf.Pow(PointsHitPoints,
 													 PointsHitPointsScale));
 		Debug.Log("Next HP increase: " + PointsHitPoints);
+		FXPlayer.PlayOneShot(FXHPUp);
 	}
 
 	void Lose()

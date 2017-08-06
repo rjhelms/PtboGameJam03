@@ -40,6 +40,7 @@ public class Suit : Enemy
                         Instantiate(Projectile[projectileIndex],
                                     FirePoint.position,
                                     Quaternion.identity);
+                        controller.FXPlayer.PlayOneShot(controller.FXSuitFire);
                         isFiring = true;
                     }
                 } else {

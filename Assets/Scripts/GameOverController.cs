@@ -13,11 +13,13 @@ public class GameOverController : MonoBehaviour {
 	public Text PlayAgain;
 	public int state = 0;
 	private float nextTick;
-
+	private GameController controller;
 	// Use this for initialization
 	void Start () {
 		nextTick = Time.time + Tick;
 		GameOverPanel.SetActive(true);
+		controller = GameObject.FindWithTag("GameController")
+			.GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -27,13 +29,15 @@ public class GameOverController : MonoBehaviour {
 			if (Time.time >= nextTick)
 			{
 				nextTick += Tick;
+				controller.FXPlayer.PlayOneShot(controller.FXBlip);
 				if (state == 0)
 				{
 					GetAJob.enabled = true;
 					state++;
 				} else if (state == 1)
 				{
-					YourScore.text = "YOUR SCORE\n" + ScoreManager.Instance.Score;
+					YourScore.text = "YOUR SCORE\n" 
+						+ ScoreManager.Instance.Score;
 					YourScore.enabled = true;
 					state++;
 				} else if (state == 2)

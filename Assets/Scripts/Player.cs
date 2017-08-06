@@ -81,6 +81,7 @@ public class Player : MonoBehaviour {
 				nextFireTime[0] = Time.fixedTime + FireInterval;
 				fireIndex++;
 				fireIndex = fireIndex % StraightProjectiles.Length;
+				controller.FXPlayer.PlayOneShot(controller.FXPlayerFire);
 			}
 			if (Input.GetButton("Fire2") && Time.fixedTime > nextFireTime[1])
 			{
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour {
 				nextFireTime[1] = Time.fixedTime + FireInterval;
 				fireIndex++;
 				fireIndex = fireIndex % StraightProjectiles.Length;
+				controller.FXPlayer.PlayOneShot(controller.FXPlayerFire);
 			}
 		}
 	}
