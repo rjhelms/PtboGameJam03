@@ -96,4 +96,15 @@ public class Player : MonoBehaviour {
 		endHitTimeout = Time.fixedTime + HitTimeoutTime;
 		flashHitTimeout = Time.fixedTime + HitTimeoutFlash;
 	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (!IsHitTimeout)
+		{
+			if (other.tag == "Terrain" || other.tag == "Enemy")
+			{
+				Hit();
+			}
+		}
+	}
 }
