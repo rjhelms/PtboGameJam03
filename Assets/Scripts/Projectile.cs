@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
 	void FixedUpdate()
 	{
 		transform.localPosition += MoveVector;
-		if (hasGravity & Time.fixedTime > gravTime)
+		if (hasGravity && Time.fixedTime > gravTime)
 		{
 			MoveVector += Vector3.down;
 			gravTime += gravRate;
@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour {
 		if (other.tag == "MainCamera")
 		{
 			Destroy(gameObject);
-		} else if (isFriendly & other.tag == "Enemy")
+		} else if (isFriendly && other.tag == "Enemy")
 		{
 			Debug.Log("Hit enemy " + other);
 			Destroy(gameObject);

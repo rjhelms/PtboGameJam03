@@ -50,25 +50,25 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
 		Vector2 moveVector = new Vector2();
 		if (Input.GetAxis("Horizontal") > 0
-			& transform.localPosition.x < 36)
+			&& transform.localPosition.x < 36)
 		{
 			moveVector += Vector2.right * moveSpeedX;
 		} else if (Input.GetAxis("Horizontal") < 0
-				   & transform.localPosition.x > -80)
+				   && transform.localPosition.x > -80)
 		{
 			moveVector += Vector2.left * moveSpeedX;
 		}
 		if (Input.GetAxis("Vertical") > 0
-			& transform.localPosition.y < 68)
+			&& transform.localPosition.y < 68)
 		{
 			moveVector += Vector2.up * moveSpeedY;
 		} else if (Input.GetAxis("Vertical") < 0 
-				   & transform.localPosition.y > -100)
+				   && transform.localPosition.y > -100)
 		{
 			moveVector += Vector2.down * moveSpeedY;
 		}
 		transform.localPosition += (Vector3)moveVector;
-		if (Input.GetButton("Fire1") & Time.fixedTime > nextFireTime[0])
+		if (Input.GetButton("Fire1") && Time.fixedTime > nextFireTime[0])
 		{
 			GameObject.Instantiate(StraightProjectiles[fireIndex],
 								   FirePoint.position, Quaternion.identity,
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
 			fireIndex++;
 			fireIndex = fireIndex % StraightProjectiles.Length;
 		}
-		if (Input.GetButton("Fire2") & Time.fixedTime > nextFireTime[1])
+		if (Input.GetButton("Fire2") && Time.fixedTime > nextFireTime[1])
 		{
 			GameObject.Instantiate(GravProjectiles[fireIndex],
 								   FirePoint.position, Quaternion.identity,
