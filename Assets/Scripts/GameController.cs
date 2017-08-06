@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
 	public int ScrollFrames;
 	public int ScrollScoreDistance = 50;
 	public int ScrollScorePoints = 10;
+	public int PointsSpeed = 5000;
+	public float PointsSpeedScale = 1.5f;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -97,6 +99,10 @@ public class GameController : MonoBehaviour {
 				scrollSinceLastScore = 0;
 			}
 		}
+		if (ScoreManager.Instance.Score >= PointsSpeed)
+		{
+			IncreaseSpeed();
+		}
 	}
 
 	public void SpawnHippie(GameObject enemy, int points)
@@ -173,5 +179,18 @@ public class GameController : MonoBehaviour {
 			Instantiate(Enemies[enemyIndex], new Vector3(XPos, YPos, 0),
 						Quaternion.identity, EnemyContainer);
 		}
+	}
+
+	void IncreaseSpeed()
+	{
+		if (ScrollFrames > 1)
+		{
+			ScrollFrames--;
+		} else {
+			ScrollRate++;
+		}
+		PointsSpeed = Mathf.RoundToInt(Mathf.Pow(PointsSpeed,
+												 PointsSpeedScale));
+		Debug.Log("Next speed increase: " + PointsSpeed);
 	}
 }
