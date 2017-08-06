@@ -97,7 +97,6 @@ public class GameController : MonoBehaviour {
 
 	void GenerateTile()
 	{
-		//Debug.Log("Generating terrain");
 		// check for height change
 		float changeHeight = Random.value;
 		if (changeHeight < TerrainHeightChangeChance)
@@ -106,21 +105,18 @@ public class GameController : MonoBehaviour {
 			if (terrainHeight == TerrainHeightMax | 
 				(increase < 0.5f & terrainHeight > TerrainHeightMin))
 			{
-				//Debug.Log("Height down");
 				terrainHeight--;
 				if (terrainHeight < TerrainHeightMin)
 				{
 					terrainHeight++;
 				}
 			} else {
-				//Debug.Log("Height up");
 				terrainHeight++;
 				if (terrainHeight > TerrainHeightMax)
 				{
 					terrainHeight--;
 				}
 			}
-			//Debug.Log("New height: " + terrainHeight);
 		}
 		// generate terrain
 		float XPos = nextGenXPosition + GenXOffset;

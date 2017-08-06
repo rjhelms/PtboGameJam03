@@ -17,6 +17,7 @@ public class Soldier : Enemy
     private bool isFiring;
     private int burstCount;
     private SpriteRenderer spriteRenderer;
+    
     protected override void Start()
     {
         base.Start();

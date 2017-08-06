@@ -13,13 +13,13 @@ public class Player : MonoBehaviour {
 	public float FireInterval = 0.2f;
 	private float[] nextFireTime = new float[2];
 	private int fireIndex = 0;
+
 	// Use this for initialization
 	void Start () {
 		nextFireTime[0] = Time.fixedTime;
 		nextFireTime[1] = Time.fixedTime;
 	}
-	
-	// Update is called once per frame
+
 	void FixedUpdate () {
 		Vector2 moveVector = new Vector2();
 		if (Input.GetAxis("Horizontal") > 0

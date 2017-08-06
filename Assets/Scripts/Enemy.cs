@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour {
 
 	public void Hit()
 	{
-		Debug.Log("Ouch!");
 		controller.SpawnHippie(gameObject);
 	}
 }
