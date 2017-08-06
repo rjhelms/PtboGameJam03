@@ -28,31 +28,34 @@ public class Soldier : Enemy
 
     void FixedUpdate()
     {
-        if (Time.fixedTime > nextStateChange)
+        if (controller.IsRunning)
         {
-            // if not firing, start firing
-            if (!isFiring)
+            if (Time.fixedTime > nextStateChange)
             {
-                isFiring = true;
-                spriteRenderer.sprite = FireSprite;
-            }
-            if (isFiring)
-            {
-                // if firing, pop off a shot
-                Instantiate(Projectile, FirePoint.position,
-                            Quaternion.identity);
-                // increment burst count
-                burstCount++;
-                // if at limit, reset count and set next to rest interval
-                if (burstCount == FireBurst)
+                // if not firing, start firing
+                if (!isFiring)
                 {
-                    nextStateChange = Time.fixedTime + RestTime;
-                    isFiring = false;
-                    burstCount = 0;
-                    spriteRenderer.sprite = BaseSprite;
-                } else {
-                    // if not at limit, set next to FireInterval
-                    nextStateChange = Time.fixedTime + FireInterval;
+                    isFiring = true;
+                    spriteRenderer.sprite = FireSprite;
+                }
+                if (isFiring)
+                {
+                    // if firing, pop off a shot
+                    Instantiate(Projectile, FirePoint.position,
+                                Quaternion.identity);
+                    // increment burst count
+                    burstCount++;
+                    // if at limit, reset count and set next to rest interval
+                    if (burstCount == FireBurst)
+                    {
+                        nextStateChange = Time.fixedTime + RestTime;
+                        isFiring = false;
+                        burstCount = 0;
+                        spriteRenderer.sprite = BaseSprite;
+                    } else {
+                        // if not at limit, set next to FireInterval
+                        nextStateChange = Time.fixedTime + FireInterval;
+                    }
                 }
             }
         }

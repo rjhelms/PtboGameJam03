@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour {
 
 	public int PointValue;
 
-	private GameController controller;
+	protected GameController controller;
 
 	// Use this for initialization
 	protected virtual void Start () {

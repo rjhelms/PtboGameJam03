@@ -24,24 +24,29 @@ public class Suit : Enemy
 
     void FixedUpdate()
     {
-        if (Time.fixedTime > nextStateChange)
+        if (controller.IsRunning)
         {
-            if (!isFiring)
+            if (Time.fixedTime > nextStateChange)
             {
-                float fireRoll = Random.value;
-                if (fireRoll <= fireChance)
+                if (!isFiring)
                 {
-                    spriteRenderer.sprite = FireSprite;
-                    nextStateChange += FireTime;
-                    int projectileIndex = Random.Range(0, Projectile.Length);
-                    Instantiate(Projectile[projectileIndex], FirePoint.position,
-                                Quaternion.identity);
-                    isFiring = true;
+                    float fireRoll = Random.value;
+                    if (fireRoll <= fireChance)
+                    {
+                        spriteRenderer.sprite = FireSprite;
+                        nextStateChange += FireTime;
+                        int projectileIndex = Random.Range(0, 
+                                                           Projectile.Length);
+                        Instantiate(Projectile[projectileIndex],
+                                    FirePoint.position,
+                                    Quaternion.identity);
+                        isFiring = true;
+                    }
+                } else {
+                    spriteRenderer.sprite = BaseSprite;
+                    nextStateChange += RestTime;
+                    isFiring = false;
                 }
-            } else {
-                spriteRenderer.sprite = BaseSprite;
-                nextStateChange += RestTime;
-                isFiring = false;
             }
         }
     }

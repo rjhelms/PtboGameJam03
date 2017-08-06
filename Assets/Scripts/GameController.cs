@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
 	public float PointsDensityFactor = 1.01f;
 	public int PointsHitPoints = 5000;
 	public float PointsHitPointsScale = 1.1f;
+	public bool IsRunning;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -77,44 +78,50 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (WorldCamera.transform.position.x >= nextGenXPosition)
+		if (IsRunning)
 		{
-			GenerateTile();
-			nextGenXPosition += GridSizeX;
+			if (WorldCamera.transform.position.x >= nextGenXPosition)
+			{
+				GenerateTile();
+				nextGenXPosition += GridSizeX;
+			}
+			ScoreText.text = string.Format("SCORE\n{0}",
+										ScoreManager.Instance.Score);
+			HealthImage.rectTransform.sizeDelta = 
+				new Vector2(ScoreManager.Instance.HitPoints * HealthImageUnitX,
+							HealthImageUnitY);
 		}
-		ScoreText.text = string.Format("SCORE\n{0}",
-									   ScoreManager.Instance.Score);
-		HealthImage.rectTransform.sizeDelta = 
-			new Vector2(ScoreManager.Instance.HitPoints * HealthImageUnitX,
-						HealthImageUnitY);
 	}
 
 	void FixedUpdate()
 	{
-		scrollFrame++;
-		scrollFrame = scrollFrame % ScrollFrames;
-		if (scrollFrame == 0)
+		if (IsRunning)
 		{
-			Vector3 scrollVector = Vector2.right * ScrollRate;
-			WorldCamera.transform.position += scrollVector;
-			scrollSinceLastScore += ScrollRate;
-			if (scrollSinceLastScore >= ScrollScoreDistance)
+			scrollFrame++;
+			scrollFrame = scrollFrame % ScrollFrames;
+			if (scrollFrame == 0)
 			{
-				ScoreManager.Instance.Score += ScrollScorePoints;
-				scrollSinceLastScore = 0;
+				Vector3 scrollVector = Vector2.right * ScrollRate;
+				WorldCamera.transform.position += scrollVector;
+				scrollSinceLastScore += ScrollRate;
+				if (scrollSinceLastScore >= ScrollScoreDistance)
+				{
+					ScoreManager.Instance.Score += ScrollScorePoints;
+					scrollSinceLastScore = 0;
+				}
 			}
-		}
-		if (ScoreManager.Instance.Score >= PointsSpeed)
-		{
-			IncreaseSpeed();
-		}
-		if (ScoreManager.Instance.Score >= PointsDensity)
-		{
-			IncreaseDensity();
-		}
-		if (ScoreManager.Instance.Score >= PointsHitPoints)
-		{
-			IncreaseHitPoints();
+			if (ScoreManager.Instance.Score >= PointsSpeed)
+			{
+				IncreaseSpeed();
+			}
+			if (ScoreManager.Instance.Score >= PointsDensity)
+			{
+				IncreaseDensity();
+			}
+			if (ScoreManager.Instance.Score >= PointsHitPoints)
+			{
+				IncreaseHitPoints();
+			}
 		}
 	}
 
@@ -141,7 +148,7 @@ public class GameController : MonoBehaviour {
 			ScoreManager.Instance.HitPoints--;
 		} else {
 			Debug.Log("Game over!");
-			Debug.Break();
+			Lose();
 		}
 	}
 
@@ -226,5 +233,10 @@ public class GameController : MonoBehaviour {
 		PointsHitPoints = Mathf.RoundToInt(Mathf.Pow(PointsHitPoints,
 													 PointsHitPointsScale));
 		Debug.Log("Next HP increase: " + PointsHitPoints);
+	}
+
+	void Lose()
+	{
+		IsRunning = false;
 	}
 }

@@ -9,18 +9,24 @@ public class Projectile : MonoBehaviour {
 	public bool hasGravity;
 	public bool isFriendly;
 	private float gravTime;
+	private GameController controller;
 	// Use this for initialization
 	void Start () {
+		controller = GameObject.FindWithTag("GameController")
+				.GetComponent<GameController>();
 		gravTime = Time.fixedTime + gravRate;
 	}
 	
 	void FixedUpdate()
 	{
-		transform.localPosition += MoveVector;
-		if (hasGravity && Time.fixedTime > gravTime)
+		if (controller.IsRunning)
 		{
-			MoveVector += Vector3.down;
-			gravTime += gravRate;
+			transform.localPosition += MoveVector;
+			if (hasGravity && Time.fixedTime > gravTime)
+			{
+				MoveVector += Vector3.down;
+				gravTime += gravRate;
+			}
 		}
 	}
 
