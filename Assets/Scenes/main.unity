@@ -1109,7 +1109,7 @@ MonoBehaviour:
   TerrainHeightChangeChance: 0.25
   EnemyDensity: 0.15
   TerrainHeightMin: 1
-  TerrainHeightMax: 7
+  TerrainHeightMax: 6
 --- !u!4 &1312917557
 Transform:
   m_ObjectHideFlags: 0
