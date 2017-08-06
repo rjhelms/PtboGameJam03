@@ -667,7 +667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &571426163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1279,6 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312917557}
   - component: {fileID: 1312917556}
+  - component: {fileID: 1312917558}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1316,6 +1317,7 @@ MonoBehaviour:
   PointsDensityFactor: 1.2
   PointsHitPoints: 5000
   PointsHitPointsScale: 1.1
+  IsRunning: 1
   Hippies:
   - {fileID: 1007774111392734, guid: 0698ef5de1eec9c4e89f4c0461b79902, type: 2}
   - {fileID: 1456056429671190, guid: 7fb3bb6437bccac4687259659c6744ab, type: 2}
@@ -1349,6 +1351,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312917558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312917555}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b69a18abfd61d4099887cba39faa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tick: 0.3
+  GameOverPanel: {fileID: 1641982999}
+  GetAJob: {fileID: 998347859}
+  YourScore: {fileID: 1442531345}
+  HighScore: {fileID: 1926858216}
+  PlayAgain: {fileID: 870603213}
 --- !u!4 &1390628894 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4574540922306110, guid: 62585c9e7e7c1b94d9908f32c0b5a6da,

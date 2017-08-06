@@ -238,5 +238,6 @@ public class GameController : MonoBehaviour {
 	void Lose()
 	{
 		IsRunning = false;
+		GetComponent<GameOverController>().enabled = true;
 	}
 }
