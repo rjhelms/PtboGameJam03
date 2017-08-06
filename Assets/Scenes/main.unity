@@ -1470,7 +1470,7 @@ MonoBehaviour:
   ScrollFrames: 1
   ScrollScoreDistance: 50
   ScrollScorePoints: 10
-  PointsSpeed: 5000
+  PointsSpeed: 7500
   PointsSpeedScale: 1.1
   PointsDensity: 2500
   PointsDensityScale: 1.05
