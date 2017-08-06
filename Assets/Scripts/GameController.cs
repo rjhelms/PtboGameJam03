@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 	public int ScrollScorePoints = 10;
 	public int PointsSpeed = 5000;
 	public float PointsSpeedScale = 1.1f;
-	public float PointsDensity = 2500;
+	public int PointsDensity = 2500;
 	public float PointsDensityScale = 1.05f;
 	public float PointsDensityFactor = 1.01f;
 	public int PointsHitPoints = 5000;
