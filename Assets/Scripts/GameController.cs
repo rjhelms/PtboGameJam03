@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour {
 	public float PointsDensity = 2500;
 	public float PointsDensityScale = 1.05f;
 	public float PointsDensityFactor = 1.01f;
+	public int PointsHitPoints = 5000;
+	public float PointsHitPointsScale = 1.1f;
 
 	[Header("Global Prefabs")]
 	public GameObject[] Hippies;
@@ -109,6 +111,10 @@ public class GameController : MonoBehaviour {
 		if (ScoreManager.Instance.Score >= PointsDensity)
 		{
 			IncreaseDensity();
+		}
+		if (ScoreManager.Instance.Score >= PointsHitPoints)
+		{
+			IncreaseHitPoints();
 		}
 	}
 
@@ -209,5 +215,16 @@ public class GameController : MonoBehaviour {
 		PointsDensity = Mathf.RoundToInt(Mathf.Pow(PointsDensity,
 												   PointsDensityScale));
 		Debug.Log("Next density increase: " + PointsDensity);
+	}
+
+	void IncreaseHitPoints()
+	{
+		if (ScoreManager.Instance.HitPoints < ScoreManager.Instance.MaxHitPoints)
+		{
+			ScoreManager.Instance.HitPoints++;
+		}
+		PointsHitPoints = Mathf.RoundToInt(Mathf.Pow(PointsHitPoints,
+													 PointsHitPointsScale));
+		Debug.Log("Next HP increase: " + PointsHitPoints);
 	}
 }
