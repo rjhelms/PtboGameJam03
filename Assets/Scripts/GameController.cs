@@ -28,7 +28,8 @@ public class GameController : MonoBehaviour {
 	public int PointsHitPoints = 5000;
 	public float PointsHitPointsScale = 1.1f;
 	public bool IsRunning;
-	public bool IsStarted = false;
+	public bool IsStarting = false;
+	public bool IsLosing = false;
 	public float StartDelay = 0.1f;
 
 	[Header("Global Prefabs")]
@@ -101,32 +102,36 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!IsStarted)
-		{
-			if (Input.GetButtonDown("Fire1"))
+		if (!IsLosing)
 			{
-				IsStarted = true;
-				TitlePanel.SetActive(false);
-				startTime = Time.time + StartDelay;
-			}
-		} else if (IsStarted && !IsRunning)
-		{
-			if (Time.time > startTime)
+			if (!IsStarting && !IsRunning)
 			{
-				IsRunning = true;
-			}
-		} else if (IsRunning)
-		{
-			if (WorldCamera.transform.position.x >= nextGenXPosition)
+				if (Input.GetButtonDown("Fire1"))
+				{
+					IsStarting = true;
+					TitlePanel.SetActive(false);
+					startTime = Time.time + StartDelay;
+				}
+			} else if (IsStarting && !IsRunning)
 			{
-				GenerateTile();
-				nextGenXPosition += GridSizeX;
+				if (Time.time > startTime)
+				{
+					IsRunning = true;
+					IsStarting = false;
+				}
+			} else if (!IsStarting && IsRunning)
+			{
+				if (WorldCamera.transform.position.x >= nextGenXPosition)
+				{
+					GenerateTile();
+					nextGenXPosition += GridSizeX;
+				}
+				ScoreText.text = string.Format("SCORE\n{0}",
+											ScoreManager.Instance.Score);
+				HealthImage.rectTransform.sizeDelta = 
+					new Vector2(ScoreManager.Instance.HitPoints * HealthImageUnitX,
+								HealthImageUnitY);
 			}
-			ScoreText.text = string.Format("SCORE\n{0}",
-										ScoreManager.Instance.Score);
-			HealthImage.rectTransform.sizeDelta = 
-				new Vector2(ScoreManager.Instance.HitPoints * HealthImageUnitX,
-							HealthImageUnitY);
 		}
 	}
 
@@ -280,6 +285,7 @@ public class GameController : MonoBehaviour {
 	void Lose()
 	{
 		IsRunning = false;
+		IsLosing = true;
 		GetComponent<GameOverController>().enabled = true;
 	}
 }
