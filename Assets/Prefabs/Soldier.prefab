@@ -122,6 +122,10 @@ MonoBehaviour:
   FireSprite: {fileID: 21300002, guid: f7f08f563a8f51b49ad0ea24d5eaee92, type: 3}
   Projectile: {fileID: 1707956683156476, guid: 9aaf198a805abaf419e23658ddbf24ef, type: 2}
   FirePoint: {fileID: 4676689833644766}
+  StartRestTime: 0.2
+  RestTime: 0.3
+  FireInterval: 0.1
+  FireBurst: 3
 --- !u!212 &212169978985988098
 SpriteRenderer:
   m_ObjectHideFlags: 1
