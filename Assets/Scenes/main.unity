@@ -1472,9 +1472,9 @@ MonoBehaviour:
   ScrollScorePoints: 10
   PointsSpeed: 7500
   PointsSpeedScale: 1.1
-  PointsDensity: 2500
-  PointsDensityScale: 1.05
-  PointsDensityFactor: 1.2
+  PointsDensity: 3000
+  PointsDensityScale: 1.07
+  PointsDensityFactor: 1.15
   PointsHitPoints: 5000
   PointsHitPointsScale: 1.1
   IsRunning: 0
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   GenXOffset: 80
   GenYOffset: -100
   TerrainHeightChangeChance: 0.25
-  EnemyDensity: 0.15
+  EnemyDensity: 0.2
   TerrainHeightMin: 1
   TerrainHeightMax: 6
   FXPlayer: {fileID: 230955901}
