@@ -1890,7 +1890,7 @@ MonoBehaviour:
   - {fileID: 1136108016594250, guid: 4982431a7fffab1439e74246de29f8a3, type: 2}
   - {fileID: 1047484755510976, guid: d60d0510601ee784e97b1048edc5d549, type: 2}
   - {fileID: 1109735490701458, guid: 4b18ff274b5ee8b4aa3b26d61092f36c, type: 2}
-  FireInterval: 0.4
+  FireInterval: 0.25
   IsHitTimeout: 0
   HitTimeoutTime: 1
   HitTimeoutFlash: 0.1
