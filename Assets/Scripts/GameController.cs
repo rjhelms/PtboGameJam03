@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 	public int GenXOffset = 96;
 	public int GenYOffset = -100;
 	public float TerrainHeightChangeChance = 0.25f;
-	public float enemyDensity = 0.05f;
+	public float EnemyDensity = 0.05f;
 	public int TerrainHeightMin = 1;
 	public int TerrainHeightMax = 6;
 
@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour {
 
 	void GenerateTile()
 	{
-		Debug.Log("Generating terrain");
+		//Debug.Log("Generating terrain");
 		// check for height change
 		float changeHeight = Random.value;
 		if (changeHeight < TerrainHeightChangeChance)
@@ -106,21 +106,21 @@ public class GameController : MonoBehaviour {
 			if (terrainHeight == TerrainHeightMax | 
 				(increase < 0.5f & terrainHeight > TerrainHeightMin))
 			{
-				Debug.Log("Height down");
+				//Debug.Log("Height down");
 				terrainHeight--;
 				if (terrainHeight < TerrainHeightMin)
 				{
 					terrainHeight++;
 				}
 			} else {
-				Debug.Log("Height up");
+				//Debug.Log("Height up");
 				terrainHeight++;
 				if (terrainHeight > TerrainHeightMax)
 				{
 					terrainHeight--;
 				}
 			}
-			Debug.Log("New height: " + terrainHeight);
+			//Debug.Log("New height: " + terrainHeight);
 		}
 		// generate terrain
 		float XPos = nextGenXPosition + GenXOffset;
@@ -132,7 +132,20 @@ public class GameController : MonoBehaviour {
 			YPos += GridSizeY;
 		}
 		// test for enemy generation
-		// if yes, determine enemy
-		// spawn enemy
+		float genEnemy = Random.value;
+		if (genEnemy < EnemyDensity)
+		{
+			// if yes, determine enemy
+			float enemyRand = Random.Range(1, Mathf.Exp(Enemies.Length));
+			int enemyIndex = Mathf.FloorToInt(Mathf.Log(enemyRand));
+			enemyIndex = Enemies.Length - enemyIndex;
+			enemyIndex--;
+			Debug.Log(enemyIndex);
+
+			// spawn enemy
+			YPos = GenYOffset + terrainHeight * GridSizeY;
+			Instantiate(Enemies[enemyIndex], new Vector3(XPos, YPos, 0),
+						Quaternion.identity, EnemyContainer);
+		}
 	}
 }
