@@ -1104,7 +1104,7 @@ MonoBehaviour:
   TerrainContainer: {fileID: 1880440482}
   GridSizeX: 16
   GridSizeY: 16
-  GenXOffset: 96
+  GenXOffset: 80
   GenYOffset: -100
   TerrainHeightChangeChance: 0.25
   EnemyDensity: 0.15
