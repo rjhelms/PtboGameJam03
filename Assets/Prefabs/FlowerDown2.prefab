@@ -93,6 +93,7 @@ MonoBehaviour:
   lifeSpan: 2
   gravRate: 0.1
   hasGravity: 1
+  isFriendly: 1
 --- !u!212 &212421658773796678
 SpriteRenderer:
   m_ObjectHideFlags: 1

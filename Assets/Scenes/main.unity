@@ -923,7 +923,7 @@ MonoBehaviour:
   GenXOffset: 96
   GenYOffset: -100
   TerrainHeightChangeChance: 0.25
-  EnemyDensity: 0.05
+  EnemyDensity: 0.1
   TerrainHeightMin: 1
   TerrainHeightMax: 7
 --- !u!4 &1312917557
@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 1515648435}
   - component: {fileID: 1515648434}
   - component: {fileID: 1515648437}
+  - component: {fileID: 1515648438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1058,6 +1059,26 @@ CapsuleCollider2D:
   m_Offset: {x: 22, y: 18}
   m_Size: {x: 44, y: 27}
   m_Direction: 1
+--- !u!50 &1515648438
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1515648433}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1541931397
 GameObject:
   m_ObjectHideFlags: 0
