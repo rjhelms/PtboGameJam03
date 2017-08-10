@@ -106,8 +106,8 @@ public class GameController : MonoBehaviour {
 			{
 			if (!IsStarting && !IsRunning)
 			{
-				if (Input.GetButtonDown("Fire1"))
-				{
+				if (Input.anyKeyDown)
+                {
 					IsStarting = true;
 					TitlePanel.SetActive(false);
 					startTime = Time.time + StartDelay;

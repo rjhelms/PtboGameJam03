@@ -906,7 +906,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press A to play again.
+  m_Text: Press any key/button to play again
 --- !u!222 &870603214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Text: 'Made in 32 hours for PtboGameJam 03
 
 
-    Press A to start.'
+    Press any key/button to start'
 --- !u!222 &1096874480
 CanvasRenderer:
   m_ObjectHideFlags: 0

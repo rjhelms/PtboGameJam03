@@ -68,7 +68,7 @@ public class GameOverController : MonoBehaviour {
 				}
 			}
 		} else {
-			if (Input.GetButtonDown("Fire1"))
+			if (Input.anyKeyDown)
 			{
 				ScoreManager.Instance.Reset();
 				SceneManager.LoadScene(0);
